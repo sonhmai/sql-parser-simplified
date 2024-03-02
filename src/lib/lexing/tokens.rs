@@ -36,7 +36,6 @@ pub enum Token {
 
     LParen,
     RParen,
-
 }
 
 #[derive(Debug, Eq, PartialEq, Clone)]

@@ -21,10 +21,7 @@ impl Parser {
         }
     }
     pub fn new_with_tokens(tokens: Vec<Token>) -> Self {
-        Self {
-            tokens,
-            index: 0,
-        }
+        Self { tokens, index: 0 }
     }
     pub fn parse_statement(&mut self, sqlstr: &str) -> Result<Statement, ParserError> {
         let tokens = Tokenizer::new(sqlstr).tokenize()?;
@@ -41,7 +38,7 @@ impl Parser {
             match self.tokens.get(self.index - 1) {
                 Some(Token::Whitespace(_)) => continue,
                 Some(token) => return token.clone(),
-                None => return Token::EOF
+                None => return Token::EOF,
             }
         }
     }
@@ -69,13 +66,20 @@ mod tests {
     #[test]
     fn test_next_token() {
         let mut parser = Parser::new_with_tokens(vec![
-            Token::Word(Word { value: "SELECT".to_string() }),
+            Token::Word(Word {
+                value: "SELECT".to_string(),
+            }),
             Token::Whitespace(Whitespace::Space),
             Token::Number("1".to_string()),
             Token::EOF,
         ]);
 
-        assert_eq!(parser.next_token(), Token::Word(Word { value: "SELECT".to_string() }));
+        assert_eq!(
+            parser.next_token(),
+            Token::Word(Word {
+                value: "SELECT".to_string()
+            })
+        );
         assert_eq!(parser.next_token(), Token::Number("1".to_string()));
         assert_eq!(parser.next_token(), Token::EOF);
     }

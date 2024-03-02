@@ -8,17 +8,14 @@ use sqlparsing::lib::parsing::Parser;
 /// - &str: read-only pointer (borrowing without taking ownership) to a string slice
 /// (seq of UTF-8 chars) of 1 TPCH query stored in memory.
 /// - `&[T]` slice of T = contiguous seq of T
-const QUERIES: &[&str] = &[
-  include_str!("tpch/1.sql"),
-  include_str!("tpch/2.sql"),
-];
+const QUERIES: &[&str] = &[include_str!("tpch/1.sql"), include_str!("tpch/2.sql")];
 
 #[test]
 fn test_tpch() {
-  let dialect = GenericDialect{};
-  let mut parser = Parser::new(&dialect);
-  let ast: Statement = parser.parse_statement(QUERIES[0]).unwrap();
+    let dialect = GenericDialect {};
+    let mut parser = Parser::new(&dialect);
+    let ast: Statement = parser.parse_statement(QUERIES[0]).unwrap();
 
-  println!("{}", QUERIES[0]);
-  println!("{:?}", ast);
+    println!("{}", QUERIES[0]);
+    println!("{:?}", ast);
 }
