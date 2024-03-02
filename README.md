@@ -1,5 +1,17 @@
 # SQL Parsing
 
+Getting Started
+``` 
+cargo test
+```
+
+
+Structure
+``` 
+src // lib source code with unit tests
+tests // integration test
+```
+
 SQLString --Lexer/Tokenizer--> Tokens --Parser--> AbstractSyntaxTree
 
 Expression

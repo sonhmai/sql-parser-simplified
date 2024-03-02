@@ -1,3 +1,6 @@
+use sqlparsing::lib::ast::statements::Statement;
+use sqlparsing::lib::dialect::GenericDialect;
+use sqlparsing::lib::parsing::Parser;
 
 /// QUERIES is a slice of string slices, each string slice is a TPCH SQL query.
 ///
@@ -12,5 +15,10 @@ const QUERIES: &[&str] = &[
 
 #[test]
 fn test_tpch() {
+  let dialect = GenericDialect{};
+  let mut parser = Parser::new(&dialect);
+  let ast: Statement = parser.parse_statement(QUERIES[0]).unwrap();
+
   println!("{}", QUERIES[0]);
+  println!("{:?}", ast);
 }
