@@ -1,5 +1,4 @@
-mod ast;
-mod expressions;
-mod parser;
-mod tokenizer;
-mod tokens;
+pub mod ast;
+pub mod dialect;
+pub mod parsing;
+pub mod lexing;
