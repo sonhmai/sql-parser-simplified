@@ -9,4 +9,4 @@ Expression
 
 Refs
 - [Primer on SQLGlot's Abstract Syntax Tree](https://github.com/tobymao/sqlglot/blob/main/posts/ast_primer.md)
-- ...
+- [Rust crate sqlparser](https://docs.rs/sqlparser/0.43.1/sqlparser/): used in Apache `arrow-datafusion` and many other places in Rust ecosystem.
