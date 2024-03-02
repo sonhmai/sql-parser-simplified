@@ -1,0 +1,3 @@
+/*
+Every node in the Syntax Tree is an Expression.
+ */
