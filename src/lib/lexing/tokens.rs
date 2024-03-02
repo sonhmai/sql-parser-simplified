@@ -13,6 +13,9 @@ Types of tokens
 
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub enum Token {
+    /// An end-of-file marker, not a real token
+    EOF,
+
     Word(Word),
     Number(String),
 

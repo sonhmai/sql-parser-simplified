@@ -1,5 +1,2 @@
-
 #[test]
-fn test_update() {
-
-}
+fn test_update() {}

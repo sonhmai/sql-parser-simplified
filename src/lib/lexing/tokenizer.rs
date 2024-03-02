@@ -2,9 +2,9 @@
 Tokenizer (Lexer) parses SQLString into SQL tokens.
  */
 
+use crate::lib::lexing::tokens::{Token, Whitespace, Word};
 use std::iter::Peekable;
 use std::str::Chars;
-use crate::lib::lexing::tokens::{Token, Whitespace, Word};
 
 pub struct Tokenizer<'a> {
     query: &'a str,
