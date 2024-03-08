@@ -7,8 +7,11 @@ Delimiters are used to separate tokens.
 
 Types of tokens
 - identifiers
-- constants
+- constants, literals
 - keywords
+- punctuations
+- whitespaces
+- operators (less than, equal, etc.)
  */
 
 #[derive(Debug, Eq, PartialEq, Clone)]

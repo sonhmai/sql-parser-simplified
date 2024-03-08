@@ -11,4 +11,5 @@ fn parse_simple_select() {
 
     println!("{:?}", ast);
     // ensure that sql string parses as a single Query
+    // assert_eq!(ast, Statement::Query)
 }

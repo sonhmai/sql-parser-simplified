@@ -23,11 +23,16 @@ impl Parser {
     pub fn new_with_tokens(tokens: Vec<Token>) -> Self {
         Self { tokens, index: 0 }
     }
+
     pub fn parse_statement(&mut self, sqlstr: &str) -> Result<Statement, ParserError> {
         let tokens = Tokenizer::new(sqlstr).tokenize()?;
         self.tokens = tokens;
         self.index = 0;
-        Ok(Statement::Insert)
+        Ok(Statement::Insert {
+            table_name: "table".to_string(),
+            columns: vec![],
+            source: None,
+        })
     }
 
     /// Return the first non-whitespace token that has not been processed

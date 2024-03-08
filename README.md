@@ -35,6 +35,45 @@ FROM --> From expression
     table1 --> Table identifier
 ```
 
+Insert statement example
+``` 
+INSERT INTO
+    customer
+VALUES (1, 2)
+
+-- tokenizer -> raw_tokens
+Word(INSERT), Whitespace, Word(INFO), 
+Whitespace, Word(customer), 
+Whitespace, Word(VALUES),
+Whitespace, LParen, Number(1), Comma, Whitespace, Number(2), RParen
+EOF
+-- removed whitespaces -> tokens
+Word(INSERT), Word(INFO), Word(customer), 
+Word(VALUES), LParen, Number(1), Comma, Number(2), RParen
+EOF
+-- parser -> Statement: INSERT
+Statement:Insert
+    into = true,
+    table_name: ObjectName = customer,
+    columns: Vec<Ident> = vec![],
+    source: Option<Query> = Some(
+        Query { 
+            with: None, 
+            body: Values(Values { 
+                explicit_row: false, 
+                rows: [
+                    [Value(Number("1", false)), 
+                    Value(Number("2", false)), 
+                    Value(Number("3", false))]] 
+        }
+    )
+```
+
+Select statement example
+``` 
+
+```
+
 
 Refs
 - [Primer on SQLGlot's Abstract Syntax Tree](https://github.com/tobymao/sqlglot/blob/main/posts/ast_primer.md)
