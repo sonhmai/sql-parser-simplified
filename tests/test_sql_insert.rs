@@ -49,7 +49,6 @@ fn parse_insert_values() {
             Statement::Insert {
                 table_name,
                 columns,
-                source: Some(source),
                 ..
             } => {
                 assert_eq!(table_name.to_string(), expected_table_name);
@@ -80,5 +79,8 @@ fn verified_stmt(query: &str) -> Statement {
     let dialect = GenericDialect{};
     let mut parser = Parser::new(&dialect);
 
-    parser.parse_statement(query).unwrap()
+    let statement = parser.parse_statement(query).unwrap();
+
+    println!("{statement:?}");
+    statement
 }

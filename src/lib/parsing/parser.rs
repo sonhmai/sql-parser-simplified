@@ -23,6 +23,7 @@ impl Parser {
     pub fn new_with_tokens(tokens: Vec<Token>) -> Self {
         Self { tokens, index: 0 }
     }
+
     pub fn parse_statement(&mut self, sqlstr: &str) -> Result<Statement, ParserError> {
         let tokens = Tokenizer::new(sqlstr).tokenize()?;
         self.tokens = tokens;
