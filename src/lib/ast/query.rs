@@ -1,2 +1,7 @@
+use crate::lib::ast::set_expr::SetExpr;
+
 /// select
-pub struct Query {}
+#[derive(Debug)]
+pub struct Query {
+    pub body: Box<SetExpr>,
+}
